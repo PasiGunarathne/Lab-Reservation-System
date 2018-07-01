@@ -1,0 +1,234 @@
+<!-- <div class="container"> -->
+    <p>
+        <!-- <a routerLink = "/signup">Sign Up</a><br>
+        <a routerLink = "/login">login</a><br>
+        <a routerLink = "/admin">Go to admin</a><br>
+        <a routerLink = "/lab">Lab</a><br> -->
+        <!-- <button class="btn btn-custom right" type="button" routerLink = "/">Home</button>
+        <button class="btn btn-custom right" type="button" routerLink = "/signup">Sign Up</button>
+        <button class="btn btn-custom right" type="button" routerLink = "/login">Login</button>
+        <button class="btn btn-custom right" type="button" routerLink = "/lab">Lab</button>
+        -->
+      </p>
+<!-- </div> -->
+
+<!-- <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </nav> -->
+  
+
+  <div class="container">
+ 
+      <div class  ="main-wrapper">
+  
+          <div class="table-responsive">
+              <h3>Current Lab Reservation</h3> <br>
+        
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Reserved Date</th>
+                      <th>Reserved Time</th>
+                      <th>Lab name</th>
+                      <th>Session</th>
+                      <th>Booked person</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let labReservation of authService.labs">
+                      <td>{{ labReservation.date }}</td>
+                      <td>{{labReservation.time}}</td>
+                      <td>{{labReservation.lab}}</td>
+                      <td>{{labReservation.session}}</td>
+                      <td>{{labReservation.person}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+  
+          <!-- <h3>Lab Requesting Form</h3>
+          <div class="row">
+            <div class="col s12 ">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <div class="row">
+                    <div class="col s5">
+                      <form #labForm="ngForm" (ngSubmit)="onSubmit(labForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedLab._id">
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input name="date" #name="ngModel" [(ngModel)]="authService.selectedLab.date" placeholder="Enter date" type="date" class="validate">
+      
+                            <label>Reserving date:
+                              <label class="red-text">*</label>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input name="time" #name="ngModel" [(ngModel)]="authService.selectedLab.time" placeholder="Enter time" type="time" class="validate">
+                            <label>Reserving time:
+      
+                            </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input name="lab" #name="ngModel" [(ngModel)]="authService.selectedLab.lab" placeholder="Enter Lab" type="text"
+                              class="validate">
+                            <label>Lab name:
+      
+                            </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input name="session" #name="ngModel" [(ngModel)]="authService.selectedLab.session" placeholder="Enter reason" type="text" class="validate">
+                            <label>Reason for booking :
+      
+                            </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <input name="person" #name="ngModel" [(ngModel)]="authService.selectedLab.person" placeholder="Enter person" type="text" class="validate">
+                              <label>Booked person :
+        
+                              </label>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="input-field col s12">
+                                <input name="email" #name="ngModel" [(ngModel)]="authService.selectedLab.email" placeholder="Enter email" type="text" class="validate">
+                                <label>Email :
+          
+                                </label>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                  <input name="contact" #name="ngModel" [(ngModel)]="authService.selectedLab.contact" placeholder="Enter contact number" type="text" class="validate">
+                                  <label>Contact number :
+            
+                                  </label>
+                                </div>
+                              </div>
+  
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <button class="btn btn-custom right" type="submit" [disabled]="!labForm.valid">Submit</button>
+                            <button class="btn btn-custom right" type="button" (click)="resetForm(labForm)">Reset</button>
+  
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+  </div>
+
+
+<!-- 
+<div class="container">
+    <h3>Lab Requesting Form</h3>
+    <div class="row">
+      <div class="col s12 ">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <div class="row">
+              <div class="col s5">
+                <form #labForm="ngForm" (ngSubmit)="onSubmit(labForm)">
+                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedLab._id">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input name="date" #name="ngModel" [(ngModel)]="authService.selectedLab.date" placeholder="Enter date" type="date" class="validate">
+
+                      <label>Reserving date:
+                        <label class="red-text">*</label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input name="time" #name="ngModel" [(ngModel)]="authService.selectedLab.time" placeholder="Enter time" type="time" class="validate">
+                      <label>Reserving time:
+
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input name="lab" #name="ngModel" [(ngModel)]="authService.selectedLab.lab" placeholder="Enter Lab" type="text"
+                        class="validate">
+                      <label>Lab name:
+
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input name="session" #name="ngModel" [(ngModel)]="authService.selectedLab.session" placeholder="Enter reason" type="text" class="validate">
+                      <label>Reason for booking :
+
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="input-field col s12">
+                        <input name="person" #name="ngModel" [(ngModel)]="authService.selectedLab.person" placeholder="Enter person" type="text" class="validate">
+                        <label>Booked person :
+  
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input name="email" #name="ngModel" [(ngModel)]="authService.selectedLab.email" placeholder="Enter email" type="text" class="validate">
+                          <label>Email :
+    
+                          </label>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="input-field col s12">
+                            <input name="contact" #name="ngModel" [(ngModel)]="authService.selectedLab.contact" placeholder="Enter contact number" type="text" class="validate">
+                            <label>Contact number :
+      
+                            </label>
+                          </div>
+                        </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <button class="btn btn-custom right" type="submit" [disabled]="!labForm.valid">Submit</button>
+                      <button class="btn btn-custom right" type="button" (click)="resetForm(labForm)">Reset</button>
+
+                    </div>
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> -->
