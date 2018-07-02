@@ -6,183 +6,197 @@
 <button class="btn btn-custom right" type="button" routerLink="/lab">Lab</button> -->
 
 <div class="col-sm-12">
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, {{username}}!</h1>
-        <p class="lead">You have successfully logged in to our system.</p>
-        <p class="lead" style="color:white;">
-            <a class="btn btn-primary btn-lg" role="button" routerLink = "/lab">Request here</a>
-          <a class="btn btn-primary btn-lg" role="button" (click)="logout()">Log Out</a>
-        </p>
-        <hr class="my-4">
-        
-        <div class="table-responsive">
-            <h3>Current Lab Reservation</h3> <br>
-      
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Reserved Date</th>
-                    <th>Reserved Time</th>
-                    <th>Lab name</th>
-                    <th>Session</th>
-                    <th>Booked person</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let labReservation of authService.labs">
-                    <td>{{ labReservation.date }}</td>
-                    <td>{{labReservation.time}}</td>
-                    <td>{{labReservation.lab}}</td>
-                    <td>{{labReservation.session}}</td>
-                    <td>{{labReservation.person}}</td>
-                  
-                  <td>
-                    <a class="action-btn" (click)="onEdit(labReservation)">
-                      <i class="material-icons">edit</i>
-                    </a>
-                    <a class="action-btn" (click)="onDelete(labReservation._id,labForm)">
-                        <i class="material-icons">delete</i>
-                      </a>
-                  </td>
-                  </tr>
-                </tbody>
-              </table>
-          </div>
+  <div class="jumbotron">
+    <h1 class="display-4">ADMIN PAGE - {{username}}</h1>
+    <!-- <p class="lead">You have successfully logged in to our system.</p> -->
+    <p class="lead" style="color:white;">
+      <!-- <a class="btn btn-primary btn-lg" role="button" routerLink = "/user">Customize User</a> -->
+      <a class="btn btn-primary btn-lg" role="button" routerLink="/lab">Request from here</a>
+      <a class="btn btn-primary btn-lg" role="button" (click)="logout()">Log Out</a>
+    </p>
+    <hr class="my-4">
+
+    <div class="table-responsive">
+      <h3>Current users</h3>
+      <br>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact number</th>
+            <th>Registered date</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let users of authService.users">
+            <td>{{users.bname}}</td>
+            <td>{{users.email}}</td>
+            <td>{{users.contact}}</td>
+            <td>{{users.creation_dt}}</td>
 
 
-        <div class="container">
- 
-            <div class  ="main-wrapper">
-        
+            <td>
+           
+              <a class="action-btn" (click)="onDeleteUser(users._id,userForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-        
-                  <h3>Lab Requesting Form</h3>
-                  <div class="row">
-                    <div class="col s12 ">
-                      <div class="card" style="background-color: #eef0ef;">
-                        <div class="card-content ">
-                          <div class="row">
-                            <div class="col s5">
-                              <form #labForm="ngForm" (ngSubmit)="onSubmit(labForm)">
-                                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedLab._id">
-                                <a>Reserving Date :</a>
-                                <div class="row">
-                                  
-                                  <div class="input-field col s12">
-                                    
-                                    <input name="date" #name="ngModel" [(ngModel)]="authService.selectedLab.date" placeholder="Enter date" type="date" class="validate" required>
-              
-                                    <!-- <label>Reserving date:
-                                      <label class="red-text">*</label>
-                                    </label> -->
-                                  </div> 
-                                </div>
-                                <a>Reserving Time :</a>
-                                <div class="row">
-                                  <div class="input-field col s12">  
-                                      <!-- <div class="row">
-                                          <div class="col-md-6">
-                                              <app-lab [options]="groupOptionsSelect" placeholder="Choose your option"></app-lab>
-                                              <label>Example label</label>
-                                          </div>
-                                      </div>                          -->
-                                      <select  name="time" #name="ngModel" [(ngModel)]="authService.selectedLab.time" class="form-control" required>
-                                          <option value="" disabled selected >Choose your time slot</option>
-                                          <option value="8am-9am">8am-9am</option>
-                                          <option value="9am-10am">9am-10am</option>
-                                          <option value="10am-11am">10am-11am</option>
-                                          <option value="11am-12am">11am-12am</option>
-                                          <option value="12am-1pm">12am-1pm</option>
-                                          <option value="1pm-2pm">1pm-2pm</option>
-                                          <option value="2pm-3pm">2pm-3pm</option>
-                                          <option value="3pm-4pm">3pm-4pm</option>
-                                          <option value="4pm-5pm">4pm-5pm</option>
-                                      </select>
-                                      <!-- <div class="dropdown">
-                                          <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown">
-                                            Select a time slot
-                                          </button>
-                                          <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#"></a>
-                                            <a class="dropdown-item" href="#">Link 2</a>
-                                            <a class="dropdown-item" href="#">Link 3</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Another link</a>
-                                          </div>
-                                        </div> -->
-          
-          
-                                    <!-- <input name="time" #name="ngModel" [(ngModel)]="authService.selectedLab.time" placeholder="Enter time" type="time" class="validate"> -->
-                                    <!-- <label>Reserving time:
-              
-                                    </label> -->
-                                  </div>
-                                </div>
-                                <a>Lab Name :</a>
-                                <div class="row">
-                                  <div class="input-field col s12">
-          
-                                      <select name="lab" #name="ngModel" [(ngModel)]="authService.selectedLab.lab" class="form-control" required>
-                                          <option value="" disabled selected >Select a lab </option>
-                                          <option value="A">Lab A</option>
-                                          <option value="B">Lab B</option>
-                                          <option value="C">Lab C</option>
-                                          <option value="D">Lab D</option>
-                                          <option value="E">Lab E</option>
-                                          <option value="ADMTC">Lab ADMTC</option>
-                                          <option value="3rd year">3rd year Lab</option>
-                                        
-                                          
-                                      </select>
-          
-                                    <!-- <input name="lab" #name="ngModel" [(ngModel)]="authService.selectedLab.lab" placeholder="Enter Lab" type="text"
-                                      class="validate"> -->
-                                    <!-- <label>Lab name:
-              
-                                    </label> -->
-                                  </div>
-                                </div>
-                                <a>Reason for booking :</a>
-                                <div class="row">
-                                  <div class="input-field col s12">
-                                    <input name="session" #name="ngModel" [(ngModel)]="authService.selectedLab.session" placeholder="Enter reason" type="text" class="validate" required>
-                                    <!-- <label>Reason for booking :
-              
-                                    </label> -->
-                                  </div>
-                                </div>
-                                <a>Booked person :</a>
-                                <div class="row">
-                                    <div class="input-field col s12" >
-                                      <input name="person" #name="ngModel" [(ngModel)]="authService.selectedLab.person" placeholder="Enter person" type="text" class="validate" required>
-                                      <!-- <label>Booked person :
-                
-                                      </label> -->
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                      </div>
-                                  </div>
-                                 
-                                   
-                                <div class="row">
-                                  <div class="input-field col s12">
-                                    <button class="btn btn-custom right" type="submit" [disabled]="!labForm.valid">Submit</button>
-                                    <button class="btn btn-custom right" type="button" (click)="resetForm(labForm)">Reset</button>
-          
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+    <div class="container">
+      <div class="main-wrapper">
+        <!-- <h3>Update User Form</h3> -->
+        <div class="row">
+          <div class="col s12 ">
+            <div class="card" style="background-color: #eef0ef;">
+              <div class="card-content ">
+                <div class="row">
+                  <div class="col s5">
+                    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedUser._id">
+                    </form>
                   </div>
 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                <!-- <h3>Lab Requesting Form</h3>
+
+    <div class="table-responsive">
+      <h3>Current Lab Reservation</h3>
+      <br>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Reserved Date</th>
+            <th>Reserved Time</th>
+            <th>Lab name</th>
+            <th>Session</th>
+            <th>Booked person</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let labReservation of authService.labs">
+            <td>{{ labReservation.date }}</td>
+            <td>{{labReservation.time}}</td>
+            <td>{{labReservation.lab}}</td>
+            <td>{{labReservation.session}}</td>
+            <td>{{labReservation.person}}</td>
+
+            <td>
+              <a class="action-btn" (click)="onEdit(labReservation)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a class="action-btn" (click)="onDelete(labReservation._id,labForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="container">
+      <div class="main-wrapper">
+        <h3>Lab Requesting Form</h3>
+        <div class="row">
+          <div class="col s12 ">
+            <div class="card" style="background-color: #eef0ef;">
+              <div class="card-content ">
+                <div class="row">
+                  <div class="col s5">
+                    <form #labForm="ngForm" (ngSubmit)="onSubmit(labForm)">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedLab._id">
+                      <a>Reserving Date :</a>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input name="date" #name="ngModel" [(ngModel)]="authService.selectedLab.date" placeholder="Enter date" type="date" class="validate"
+                            required>
+                          <!-- <label>Reserving date:
+                                      <label class="red-text">*</label>
+                                    </label> -->
+                        </div>
+                      </div>
+                      <a>Reserving Time :</a>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <select name="time" #name="ngModel" [(ngModel)]="authService.selectedLab.time" class="form-control" required>
+                            <option value="" disabled selected>Choose your time slot</option>
+                            <option value="8am-9am">8am-9am</option>
+                            <option value="9am-10am">9am-10am</option>
+                            <option value="10am-11am">10am-11am</option>
+                            <option value="11am-12am">11am-12am</option>
+                            <option value="12am-1pm">12am-1pm</option>
+                            <option value="1pm-2pm">1pm-2pm</option>
+                            <option value="2pm-3pm">2pm-3pm</option>
+                            <option value="3pm-4pm">3pm-4pm</option>
+                            <option value="4pm-5pm">4pm-5pm</option>
+                          </select>
+                        </div>
+                      </div>
+                      <a>Lab Name :</a>
+                      <div class="row">
+                        <div class="input-field col s12">
+
+                          <select name="lab" #name="ngModel" [(ngModel)]="authService.selectedLab.lab" class="form-control" required>
+                            <option value="" disabled selected>Select a lab </option>
+                            <option value="A">Lab A</option>
+                            <option value="B">Lab B</option>
+                            <option value="C">Lab C</option>
+                            <option value="D">Lab D</option>
+                            <option value="E">Lab E</option>
+                            <option value="ADMTC">Lab ADMTC</option>
+                            <option value="3rd year">3rd year Lab</option>
+                          </select>
+                        </div>
+                      </div>
+                      <a>Reason for booking :</a>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input name="session" #name="ngModel" [(ngModel)]="authService.selectedLab.session" placeholder="Enter reason" type="text"
+                            class="validate" required>
+                        </div>
+                      </div>
+                      <a>Booked person :</a>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input name="person" #name="ngModel" [(ngModel)]="authService.selectedLab.person" placeholder="Enter person" value="Admin-{{username}}"
+                            type="text" class="validate" required>
+                        </div>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <button class="btn btn-custom right" type="submit" [disabled]="!labForm.valid">Submit</button>
+                          <button class="btn btn-custom right" type="button" (click)="resetForm(labForm)">Reset</button>
+
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- <h3>Lab Requesting Form</h3>
                 <div class="row">
                   <div class="col s12 ">
                     <div class="card blue-grey darken-1">
@@ -265,10 +279,10 @@
                     </div>
                   </div>
                 </div> -->
-              </div>
-        </div>
-      
-
-
       </div>
+    </div>
+
+
+
+  </div>
 </div>

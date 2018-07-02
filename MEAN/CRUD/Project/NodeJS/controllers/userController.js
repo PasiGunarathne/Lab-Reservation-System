@@ -73,30 +73,30 @@ router.put('/:id', (req, res) => {
     if(!ObjectId.isValid(req.params.id))
         return res.status(400).send('No  record with given id : ${req.params.id}');
 
-        var labReservation = {
-            date: req.body.date,
-            time: req.body.time,
-            lab: req.body.lab,
-            session: req.body.session,
-            person: req.body.person,
+        var users = {
+            bname: req.body.bname,
+            email: req.body.email,
+            contact: req.body.contact,
+            // session: req.body.session,
+            // person: req.body.person,
            
         };
-        Lab.findByIdAndUpdate(req.params.id, {$set:labReservation}, {new:true}, (err, doc) => {
+        User.findByIdAndUpdate(req.params.id, {$set:users}, {new:true}, (err, doc) => {
             if(!err) { res.send(doc); }
             else { console.log('Error in Lab Update : '+ JSON.stringify(err, undefined, 2)); }
         });
 });
 
 
-// router.delete('/:id', (req, res) => {
-//     if(!ObjectId.isValid(req.params.id))
-//         return res.status(400).send('No  record with given id : ${req.params.id}');
+router.delete('/:id', (req, res) => {
+    if(!ObjectId.isValid(req.params.id))
+        return res.status(400).send('No  record with given id : ${req.params.id}');
 
-//     Lab.findByIdAndRemove(req.params.id, (err, doc)=> {
-//         if(!err) { res.send(doc); }
-//             else { console.log('Error in Lab Deletes : '+ JSON.stringify(err, undefined, 2)); }
-//     });
-// });
+    User.findByIdAndRemove(req.params.id, (err, doc)=> {
+        if(!err) { res.send(doc); }
+            else { console.log('Error in User Deletes : '+ JSON.stringify(err, undefined, 2)); }
+    });
+});
 
 console.log('hello2 ');
 console.log('hell4');

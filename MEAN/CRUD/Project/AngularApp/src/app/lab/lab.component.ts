@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
-// import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 // import { FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { Lab } from '../shared/lab.model';
@@ -17,8 +17,17 @@ declare var M: any;
 
 export class LabComponent implements OnInit {
 
-
-  constructor(private authService: AuthService) { }
+  username:String='';
+  constructor(private authService: AuthService, private _router:Router) {
+    this.authService.user()
+    .subscribe(
+      data=>{console.log(data);this.addName(data)},
+      error=>this._router.navigate(['/login'])
+    )
+   }
+   addName(data){
+    this.username = data.bname;
+  }
 
 
   ngOnInit() {

@@ -6,8 +6,7 @@ var Lab = mongoose.model('Lab', {
     lab : { type : String },
     session  : { type : String },
     person  : { type : String },
-    email  : { type : String },
-    contact  : { type : String },
+   
 
 }, 'labReservation');
 

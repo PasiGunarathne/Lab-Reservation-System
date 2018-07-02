@@ -27,6 +27,7 @@
                 </tbody>
               </table> -->
           <!-- </div> -->
+          <a class="btn btn-primary btn-lg" role="button" routerLink="/user">Go back</a>
 
           <br><br><br>
 
@@ -130,7 +131,7 @@
                       <a>Booked person :</a>
                       <div class="row">
                           <div class="input-field col s12" >
-                            <input name="person" #name="ngModel" [(ngModel)]="authService.selectedLab.person" placeholder="Enter person" type="text" class="validate" required>
+                            <input name="person" #name="ngModel" [(ngModel)]="authService.selectedLab.person" placeholder="Enter person" value="{{username}}" type="text" class="validate" required>
                             <!-- <label>Booked person :
       
                             </label> -->
