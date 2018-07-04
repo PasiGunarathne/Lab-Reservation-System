@@ -29,10 +29,10 @@ var User = module.exports = mongoose.model('user', schema);
 console.log('hell7');
 
 
-module.exports.getUserByEmail = function(username, callback){
-	var query = {username: username};
-	User.findOne(query, callback);
-}
+// module.exports.getUserByEmail = function(username, callback){
+// 	var query = {username: username};
+// 	User.findOne(query, callback);
+// }
 
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);

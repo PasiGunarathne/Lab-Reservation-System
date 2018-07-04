@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from './shared/auth.service';
 import { UserComponent } from './user/user.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -25,6 +26,7 @@ import { UserComponent } from './user/user.component';
     HomeComponent,
     SignupComponent,
     UserComponent,
+    SearchComponent,
     
   ],
   imports: [
@@ -36,6 +38,10 @@ import { UserComponent } from './user/user.component';
       {
         path: 'signup',
         component : SignupComponent
+      },
+      {
+        path: 'search',
+        component :SearchComponent
       },
       {
         path: 'lab',

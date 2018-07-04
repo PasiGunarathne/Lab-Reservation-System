@@ -17,3 +17,9 @@ var Lab = mongoose.model('Lab', {
 
 module.exports = {Lab};
 // module.exports = {User};
+
+
+// module.exports.getDTL = function(value, callback){
+// 	var query = {date: value};
+// 	User.findOne(query, callback);
+// }

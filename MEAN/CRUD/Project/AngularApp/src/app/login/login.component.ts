@@ -5,6 +5,7 @@ import { RouterModule, Router } from '@angular/router';
 import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../shared/user.model';
 
+declare var M: any;
 
 @Component({
   selector: 'app-login',
@@ -70,7 +71,9 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['/admin']);
         
       } ,
-      error=>console.error(error)
+      error=>{console.error(error);
+        M.toast({ html: 'Inavalid Username or Passowrd', classes: 'rounded' });
+      }
     )   
 
   }

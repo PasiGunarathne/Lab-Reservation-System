@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
   }
 
   register() { 
-    if (!this.registerForm.valid || this.registerForm.controls.contact || (this.registerForm.controls.password.value != this.registerForm.controls.cpassword.value)) {
+    if (!this.registerForm.valid || (this.registerForm.controls.password.value != this.registerForm.controls.cpassword.value)) {
       console.log('Invalid registration');
       M.toast({ html: 'Invalid registration', classes: 'rounded' }); return;
 

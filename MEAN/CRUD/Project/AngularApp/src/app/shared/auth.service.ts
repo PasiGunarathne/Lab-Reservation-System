@@ -43,6 +43,17 @@ export class AuthService {
   deleteLab(_id: string) {
     return this.http.delete('http://localhost:3000/labs/' + _id);
   }
+  // search lab reservation
+  // searchLab(queryTitle: string){
+  //   this.query = queryTitle;
+  //   this.loading = true;
+  //   this.initialised = true;
+  //   this.books = [];
+  //   this.http.get('${this.API_PATH}?q=${this.query}&maxResults=${this.pageSize}&startIndex=${this.startIndex}')
+  //   .map(res => res.json())
+  //   .do(data => {this.totalItems = data.totalItems;})
+  //   .map(items => {return items.map(item => this.)})
+  // }
 
 
 
