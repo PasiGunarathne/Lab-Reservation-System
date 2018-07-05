@@ -1,0 +1,65 @@
+<div class="container">
+
+<div class="card"  style="background-color: #f1f3f2;">
+    <div class="container" >
+      <h2>Resgister here</h2>
+        <div class="row">
+          <div class="col s5">
+              <form [formGroup]="registerForm" >       
+                  <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedUser._id"> -->
+                  <div class="row">
+                    <div class="input-field col s12">
+                     
+                          <a>Name (with initials) :</a>
+                      <input formControlName="bname"  placeholder="Enter full name" type="text" class="validate" required>
+        
+                     
+                  </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <a>Email :</a>
+                      <input formControlName="email" placeholder="Enter Email" type="email" class="validate" required>
+                     
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                        <a>Contact number :</a>
+                      <input formControlName="contact"  placeholder="Enter number" type="number" class="validate" >
+                  
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                        <a> Password :</a>
+                      <input formControlName="password"  placeholder="Enter password" type="password" class="validate" required>
+                
+                    </div>
+                  </div>
+               
+                  <div class="row">
+                    
+                      <div class="input-field col s12">
+                        <a>Confirm Password :</a>
+                        <input formControlName="cpassword" placeholder="Enter confirm password" type="password" class="validate" required>
+                        
+                      </div>
+                      
+                    </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <button class="btn btn-custom right" type="submit"  [disabled]="!registerForm.valid" (click)="register()">Resgister</button>
+                      <button class="btn btn-custom right" type="button" (click)="resetForm(userForm)">Reset</button>
+                      <button class="btn btn-custom left" type="button" (click)="moveToLogin()">Login</button>
+        
+                    </div>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+</div> 
+ 
+</div>
+

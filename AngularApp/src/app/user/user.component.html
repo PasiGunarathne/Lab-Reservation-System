@@ -1,0 +1,153 @@
+<div class="col-sm-12">
+  <div class="jumbotron">
+    <h1 class="display-4">USER PAGE - {{username}}</h1>
+    <!-- <p class="lead">You have successfully logged in to our system.</p> -->
+    <p class="lead" style="color:white;">
+      <a class="btn btn-primary btn-lg" role="button" routerLink="/lab">Request from here</a>
+      <a class="btn btn-primary btn-lg" role="button" (click)="logout()">Log Out</a>
+    </p>
+    <hr class="my-4">
+
+
+    <div id="calendar">
+     
+    </div>
+
+
+    <!-- calendar -->
+    <div>
+      <!-- <img src="img/title.png" alt=""> -->
+      <div id="calendar"></div>
+      <script>
+        $('#calendar').datepicker({
+          inline: true,
+          firstDay: 1,
+          showOtherMonths: true,
+          dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        });
+      </script>
+      
+    </div>
+
+
+
+<div class="container">
+    <div class="main-wrapper">
+        <!-- <input type="hidden" class="form-control" placeholder="Enter search string" name="search" value={{username}} [(ngModel)]="term1" required> -->
+
+      <div class="table-responsive">
+        <h3>Current Lab Reservation</h3>
+        <br>
+       
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Reserved Date</th>
+              <th>Reserved Time</th>
+              <th>Lab name</th>
+              <th>Session</th>
+              <th>Booked person</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let labReservation of authService.labs ">
+            <tr >
+                <!-- *ngIf="labReservation.person == username " -->
+              <!-- <tr *ngFor="let labReservation of authService.labs"> -->
+              <td>{{ labReservation.date }}</td>
+              <td>{{labReservation.time}}</td>
+              <td>{{labReservation.lab}}</td>
+              <td>{{labReservation.session}}</td>
+              <td>{{labReservation.person}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+    <br><br>
+      <h3>Search Lab Reservation</h3>
+      <div class="row">
+        
+        <!-- <div class="input-field col s3"> -->
+            <h5>Enter a Date</h5>
+            <input type="date" class="form-control" placeholder="Enter a date" name="search" [(ngModel)]="term" required>
+
+        <!-- </div> -->
+        <!-- <br> -->
+          <!-- <div class="input-field col s3"> -->
+              <h5>Enter a Lab</h5>
+              <select name="lab" #name="ngModel" [(ngModel)]="term1" class="form-control" required>
+                  <option value="" disabled selected >Select a lab </option>
+                  <option value="A">Lab A</option>
+                  <option value="B">Lab B</option>
+                  <option value="C">Lab C</option>
+                  <option value="D">Lab D</option>
+                  <option value="E">Lab E</option>
+                  <option value="Electronic Lab">Electronic Lab</option>
+                  <option value="3rd year lab">3rd year Lab</option>
+                  <option value="4th year Lab">4th year Lab</option>
+
+                
+                  
+              </select>
+              
+              <h5>Select a time slot</h5>
+              <select  name="time" #name="ngModel" [(ngModel)]="term2" class="form-control" required>
+                  <option value="" disabled selected >Choose your time slot</option>
+                  <option value="8am-9am">8am-9am</option>
+                  <option value="9am-10am">9am-10am</option>
+                  <option value="10am-11am">10am-11am</option>
+                  <option value="11am-12am">11am-12am</option>
+                  <option value="12am-1pm">12am-1pm</option>
+                  <option value="1pm-2pm">1pm-2pm</option>
+                  <option value="2pm-3pm">2pm-3pm</option>
+                  <option value="3pm-4pm">3pm-4pm</option>
+                  <option value="4pm-5pm">4pm-5pm</option>
+              </select>
+
+          
+         </div>
+    <div class="container">
+      <div class="main-wrapper">
+        <div class="table-responsive">
+          <br>
+          
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Reserved Date</th>
+                <th>Reserved Time</th>
+                <th>Lab name</th>
+                <th>Session</th>
+                <th>Booked person</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let labReservation of authService.labs">
+              <tr *ngIf="labReservation.date == term && labReservation.lab == term1 && labReservation.time == term2" >
+                <!-- <tr *ngFor="let labReservation of authService.labs"> -->
+                <td>{{labReservation.date}}</td>
+                <td>{{labReservation.time}}</td>
+                <td>{{labReservation.lab}}</td>
+                <td>{{labReservation.session}}</td>
+                <td>{{labReservation.person}}</td>
+              </tr>
+              
+              <!-- <tr #not>Not</tr> -->
+            </tbody>
+          </table>
+          <!-- <div *ngFor="let x of"> -->
+              <tr *ngIf="authService.labs.date != term && authService.labs.lab != term1 && authService.labs.time != term2">
+                  <h3>Available</h3>
+                </tr> 
+         
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

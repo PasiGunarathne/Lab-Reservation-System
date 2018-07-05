@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="m-3 text-center">
+    <form class="form-inline" (ngSubmit)="doSearch()">
+      <div class="row">
+        <input type="date" class="form-control" placeholder="Enter search string" name="search" [(ngModel)]="term" required>
+        <input type="text" class="form-control" placeholder="Enter search string" name="search" [(ngModel)]="term1" required>
+
+
+      </div>
+      <!-- <button type="submit" class="btn btn-primary">Search</button> -->
+    </form>
+    <hr />
+    <div class="text-center">
+      <p class="lead">Loading...</p>
+      <p class="lead">No results returned</p>
+      <p class="lead">Enter a date above and click search</p>
+    </div>
+  </div>
+  <ul>
+    <!-- <li *ngFor="let labReservation of authService.labs">{{labReservation.time}} , {{labReservation.lab}}</li> -->
+  </ul>
+
+  <div class="container">
+
+    <div class="main-wrapper">
+
+      <div class="table-responsive">
+        <h3>Current Lab Reservation</h3>
+        <br>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Reserved Date</th>
+              <th>Reserved Time</th>
+              <th>Lab name</th>
+              <th>Session</th>
+              <th>Booked person</th>
+            </tr>
+          </thead>
+          <!-- *ngIf="search.date == date " -->
+          <tbody  *ngFor="let x of authService.labs " >
+            <tr *ngIf = "x.date == term && x.lab == term1">
+                <!-- <tr *ngIf = "x.lab == term1"> -->
+              <td>{{x.date }}</td>
+              <td>{{x.time}}</td>
+              <td>{{x.lab}}</td>
+              <td>{{x.session}}</td>
+              <td>{{x.person}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

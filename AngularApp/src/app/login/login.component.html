@@ -1,0 +1,53 @@
+
+<div class="container">
+ 
+  <br>
+  <br>
+  
+</div><br><br>
+
+
+<div class="card" style="background-color: #f1f3f2;">
+    <div class="container">
+      <h2>Login here</h2>
+        <div class="row">
+          <div class="col s5">
+              <form [formGroup]="loginForm" > 
+                 <div class="form-group"> 
+                    <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="authService.selectedUser._id"> -->
+           
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <a>Email :</a>
+                      <input formControlName="email"  placeholder="Enter Email" type="email" class="validate" required>
+                      <!-- <label>Email:
+        
+                      </label> -->
+                    </div>
+                  </div>
+            
+                  <div class="row">
+                    <div class="input-field col s12">
+                        <a> Password :</a>
+                      <input formControlName="password"  placeholder="Enter password" type="password" class="validate" required>
+                      <!-- <label>Password:
+        
+                      </label> -->
+                    </div>
+                  </div>
+                 
+              
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <button class="btn btn-custom right" type="submit" [disabled]="!loginForm.valid" (click)="loginUser()">Login</button>
+                      <button class="btn btn-custom right" type="button" (click)="moveToRegister()">Register</button>
+                      
+                    </div>
+                  </div>
+                 </div>
+                </form>
+          </div>
+        </div>
+      </div>
+</div>
+
